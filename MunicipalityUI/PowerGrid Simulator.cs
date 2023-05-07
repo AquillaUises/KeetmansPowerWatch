@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace KHP_PowerWatch
 {
-    public partial class MainDashboard : Form
+    public partial class PowerGrid_Simulator : Form
     {
-        public MainDashboard()
+        public PowerGrid_Simulator()
         {
             InitializeComponent();
         }
@@ -27,7 +27,7 @@ namespace KHP_PowerWatch
         private void CAbtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Consumption_Analysis consumption_Analysis = new Consumption_Analysis();
+            ConsumptionAnalysis consumption_Analysis = new ConsumptionAnalysis();
             consumption_Analysis.Show();
         }
 
@@ -52,6 +52,13 @@ namespace KHP_PowerWatch
             login.Show();
         }
 
+        private void DMbtn_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            Database_Management database_Management = new Database_Management();
+            database_Management.Show();
+        }
+
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -59,11 +66,11 @@ namespace KHP_PowerWatch
             mainDashboard.Show();
         }
 
-        private void Logoutbtn_Click_1(object sender, EventArgs e)
+        private void DMbtn_Click_2(object sender, EventArgs e)
         {
             this.Hide();
-            Login login = new Login();
-            login.Show();
+            Database_Management database_Management = new Database_Management();
+            database_Management.Show();
         }
     }
 }

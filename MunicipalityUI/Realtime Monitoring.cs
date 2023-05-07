@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace KHP_PowerWatch
 {
-    public partial class Database_Management : Form
+    public partial class Realtime_Monitoring : Form
     {
-        public Database_Management()
+        public Realtime_Monitoring()
         {
             InitializeComponent();
         }
@@ -27,7 +27,7 @@ namespace KHP_PowerWatch
         private void CAbtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Consumption_Analysis consumption_Analysis = new Consumption_Analysis();
+            ConsumptionAnalysis consumption_Analysis = new ConsumptionAnalysis();
             consumption_Analysis.Show();
         }
 
@@ -52,11 +52,6 @@ namespace KHP_PowerWatch
             login.Show();
         }
 
-        private void Database_Management_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -67,7 +62,7 @@ namespace KHP_PowerWatch
         private void CAbtn_Click_1(object sender, EventArgs e)
         {
             this.Hide();
-            Consumption_Analysis consumption_Analysis = new Consumption_Analysis();
+            ConsumptionAnalysis consumption_Analysis = new ConsumptionAnalysis();
             consumption_Analysis.Show();
         }
 

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -10,9 +12,10 @@ using System.Windows.Forms;
 
 namespace KHP_PowerWatch
 {
-    public partial class Consumption_Analysis : Form
+    public partial class ConsumptionAnalysis : Form
     {
-        public Consumption_Analysis()
+        static string connec_string = ConfigurationManager.ConnectionStrings["connec_string"].ConnectionString;
+        public ConsumptionAnalysis()
         {
             InitializeComponent();
         }
@@ -27,7 +30,7 @@ namespace KHP_PowerWatch
         private void CAbtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Consumption_Analysis consumption_Analysis = new Consumption_Analysis();
+            ConsumptionAnalysis consumption_Analysis = new ConsumptionAnalysis();
             consumption_Analysis.Show();
         }
 
@@ -69,7 +72,7 @@ namespace KHP_PowerWatch
         private void CAbtn_Click_1(object sender, EventArgs e)
         {
             this.Hide();
-            Consumption_Analysis consumption_Analysis = new Consumption_Analysis();
+            ConsumptionAnalysis consumption_Analysis = new ConsumptionAnalysis();
             consumption_Analysis.Show();
         }
 
@@ -95,6 +98,79 @@ namespace KHP_PowerWatch
         }
 
         private void pictureBox2_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            MainDashboard mainDashboard = new MainDashboard();
+            mainDashboard.Show();
+        }
+
+        private void FillDataGridView()
+        {
+            SqlConnection conn = new SqlConnection(connec_string);
+
+            try
+            {
+                conn.Open();
+
+                string query = "SELECT * FROM PURCHASE_HISTORY WHERE AccountNumber = @AccountNumber ORDER BY Purchase_Date ASC";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@AccountNumber", txtBoxAccount.Text.Trim());
+
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                DataTable dataTable = new DataTable();
+
+                adapter.Fill(dataTable);
+                DGVPurchaseHist.DataSource = dataTable;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally { conn.Close(); }
+        }
+
+        private void ViewBill()
+        {
+            SqlConnection conn = new SqlConnection(connec_string);
+
+            try
+            {
+                conn.Open();
+
+                string query = "SELECT * FROM ACCOUNT WHERE AccountNumber = @AccountNumber";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@AccountNumber", txtBoxAccount.Text.Trim());
+
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                DataTable dataTable = new DataTable();
+
+                adapter.Fill(dataTable);
+                DGVPurchaseHist.DataSource = dataTable;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnViewHistory_Click(object sender, EventArgs e)
+        {
+            FillDataGridView();
+        }
+
+        private void btnViewBill_Click(object sender, EventArgs e)
+        {
+            ViewBill();
+        }
+
+        private void btnViewBill_Click_1(object sender, EventArgs e)
+        {
+            ViewBill();
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
         {
             this.Hide();
             MainDashboard mainDashboard = new MainDashboard();
