@@ -26,6 +26,7 @@ namespace KHP_PowerWatch
 
         StaffLogin stf = new StaffLogin();
         UserDAL dal = new UserDAL();
+        public static string loggedInStaff;
 
         private void Loginbtn_Click(object sender, EventArgs e)
         {
@@ -36,6 +37,7 @@ namespace KHP_PowerWatch
 
             if (success == true)
             {
+                loggedInStaff = stf.username;
                 this.Hide();
                 MainDashboard mainDashboard = new MainDashboard();
                 mainDashboard.Show();

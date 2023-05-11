@@ -20,7 +20,7 @@ namespace KHP_PowerWatch
         private void RMbtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Realtime_Monitoring realtime_Monitoring = new Realtime_Monitoring();
+            RealTimeMonitoring realtime_Monitoring = new RealTimeMonitoring();
             realtime_Monitoring.Show();
         }
 
@@ -41,7 +41,7 @@ namespace KHP_PowerWatch
         private void DMbtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Database_Management database_Management = new Database_Management();
+            DatabaseManagement database_Management = new DatabaseManagement();
             database_Management.Show();
         }
 
@@ -54,6 +54,7 @@ namespace KHP_PowerWatch
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
+            Logo.Text = Login.loggedInStaff.ToString();
             this.Hide();
             MainDashboard mainDashboard = new MainDashboard();
             mainDashboard.Show();
@@ -64,6 +65,11 @@ namespace KHP_PowerWatch
             this.Hide();
             Login login = new Login();
             login.Show();
+        }
+
+        private void MainDashboard_Load(object sender, EventArgs e)
+        {
+            lblStaff.Text = Login.loggedInStaff.ToString();
         }
     }
 }

@@ -20,7 +20,7 @@ namespace KHP_PowerWatch
         private void RMbtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Realtime_Monitoring realtime_Monitoring = new Realtime_Monitoring();
+            RealTimeMonitoring realtime_Monitoring = new RealTimeMonitoring();
             realtime_Monitoring.Show();
         }
 
@@ -41,7 +41,7 @@ namespace KHP_PowerWatch
         private void DMbtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Database_Management database_Management = new Database_Management();
+            DatabaseManagement database_Management = new DatabaseManagement();
             database_Management.Show();
         }
 
@@ -55,7 +55,7 @@ namespace KHP_PowerWatch
         private void DMbtn_Click_1(object sender, EventArgs e)
         {
             this.Hide();
-            Database_Management database_Management = new Database_Management();
+            DatabaseManagement database_Management = new DatabaseManagement();
             database_Management.Show();
         }
 
@@ -69,8 +69,25 @@ namespace KHP_PowerWatch
         private void DMbtn_Click_2(object sender, EventArgs e)
         {
             this.Hide();
-            Database_Management database_Management = new Database_Management();
+            DatabaseManagement database_Management = new DatabaseManagement();
             database_Management.Show();
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PowerGrid_Simulator_Load(object sender, EventArgs e)
+        {
+            lblStaff.Text = Login.loggedInStaff.ToString();
+        }
+
+        private void CAbtn_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            ConsumptionAnalysis consumptionAnalysis = new ConsumptionAnalysis();
+            consumptionAnalysis.Show();
         }
     }
 }

@@ -47,6 +47,7 @@ namespace KHP_PowerWatch
             else if (!textBox1.Text.Equals(textBox2.Text))
             {
                 MessageBox.Show("Unmatched Passwords!!");
+                usernametxtbox.Focus(); 
             }
 
             if (success == true)

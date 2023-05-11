@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
+using KHP_PowerWatch.StaffLL;
 
 namespace KHP_PowerWatch.DAL
 {
@@ -15,6 +16,9 @@ namespace KHP_PowerWatch.DAL
 
         static string connec_string = ConfigurationManager.ConnectionStrings["connec_string"].ConnectionString;
 
+      //  UserDAL dal = new UserDAL();
+        StaffLogin login = new StaffLogin();
+       
         public bool loginCheck(StaffLL.StaffLogin staff)
         {
             bool isSuccess = false;
@@ -36,7 +40,7 @@ namespace KHP_PowerWatch.DAL
 
                 if (dt.Rows.Count > 0)
                 {
-                    isSuccess = true;
+                    isSuccess = true;           
                 }
                 else
                 {
